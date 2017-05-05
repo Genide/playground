@@ -5,7 +5,7 @@ class View extends VorpalView {
   constructor(closeCB) {
     let options = {
       delimiter: "App1$",
-      replaceDelim: true
+      //replaceDelim: true
     }
     super(closeCB, options);
 

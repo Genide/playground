@@ -1,8 +1,10 @@
 const VorpalView = require('./VorpalView.js');
 const fsAutocomplete = require('vorpal-autocomplete-fs');
+const myAutocomplete = require('./AutoComplete.js');
 
 class View extends VorpalView {
   constructor(closeCB) {
+    let startDirectory = undefined;
     let options = {
       delimiter: "Main$"
     }
@@ -10,9 +12,9 @@ class View extends VorpalView {
     this.vInst.find('close').remove();
     this.vInst
       .command('run <app>', 'Runs the application')
-      .autocomplete(fsAutocomplete())
+      .autocomplete(myAutocomplete({startDirectory}))
       .action((args, cb) => {
-        let app = require(args.app);
+        let app = require(startDirectory + args.app);
         this.launch(cb, app, undefined);
       })
   }
