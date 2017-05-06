@@ -4,7 +4,7 @@ const myAutocomplete = require('./AutoComplete.js');
 
 class View extends VorpalView {
   constructor(closeCB) {
-    let startDirectory = undefined;
+    let startDirectory = "./apps/";
     let options = {
       delimiter: "Main$"
     }
