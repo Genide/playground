@@ -13,6 +13,15 @@ class VorpalView {
       .action(function(args, callback) {
         closeCB();
       });
+
+    this.vInst
+      .command('mem')
+      .description('Outputs memory usage in bytes')
+      .hidden()
+      .action(function(args, callback) {
+        this.log(process.memoryUsage());
+        callback();
+      });
   }
 
   launch(cb, VorpalViewClass, args) {
