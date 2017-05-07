@@ -12,6 +12,7 @@ class VorpalView {
       .alias('..')
       .action(function(args, callback) {
         closeCB();
+        callback();
       });
 
     this.vInst
@@ -24,15 +25,19 @@ class VorpalView {
       });
   }
 
+  show() {
+    this.vInst.show();
+  }
+
   launch(cb, VorpalViewClass, args) {
     let closeCB = () => {
       cb();
-      this.vInst.show();
+      this.show();
     }
     let newVClass = new VorpalViewClass(closeCB, args)
     let newDelim = newVClass.replaceDelim ? newVClass.delimiter : this.vInst.ui.delimiter() + newVClass.delimiter;
     newVClass.vInst.delimiter(newDelim);
-    newVClass.vInst.show();
+    newVClass.show();
   }
 }
 
