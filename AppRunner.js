@@ -1,5 +1,4 @@
 const VorpalView = require('./VorpalView.js');
-const fsAutocomplete = require('vorpal-autocomplete-fs');
 const myAutocomplete = require('./AutoComplete.js');
 
 class View extends VorpalView {
